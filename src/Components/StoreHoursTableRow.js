@@ -2,7 +2,7 @@ import React from "react";
 import { Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import EditHours from "./edit-hour.component";
+// import EditHours from "./edit-hour.component";
 
 const StoreHoursTableRow = (props) => {
 const { id, day, open, close } = props.obj;
@@ -25,15 +25,17 @@ return (
 	<td>{open}</td>
 	<td>{close}</td>
 	<td>
+           
+    <Link className="edit-link" 
+          to={"/edit-store-hour/" + id}>
+          Edit
+        </Link>
 		
 		<Button onClick={deleteStoreHour}
 		size="sm" variant="danger">
 		Delete
 		</Button>
-        <Link className="edit-link" 
-          to={"/edit-hours/" + id}>
-          Edit
-        </Link>
+     
 	</td>
 	</tr>
 );

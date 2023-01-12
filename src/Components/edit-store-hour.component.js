@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import StoreHoursForm from "./StoreHoursForm";
-  
+import { Link, useParams } from 'react-router-dom';
+
 // EditStoreHours Component
 const EditHours = (props) => {
+  const { id } = useParams();
+
   const [formValues, setFormValues] = useState({
     day: '', open: '', close: ''
   });
@@ -13,13 +16,13 @@ const EditHours = (props) => {
     axios
       .put(
         "https://xhvvmqq4od.execute-api.us-east-1.amazonaws.com/dev/update-store-hours/" +
-          props.match.params.id,
+          id,
         hourObject
       )
       .then((res) => {
         if (res.status === 200) {
           alert("Hour successfully updated");
-          props.history.push("/store-hours-list");
+          //props.history.push("/store-hours-list");
         } else Promise.reject();
       })
       .catch((err) => alert("Something went wrong"));
@@ -27,12 +30,14 @@ const EditHours = (props) => {
   
   // Load data from server and reinitialize hour form
   useEffect(() => {
+    console.log(id)
     axios
       .get(
-        "https://xhvvmqq4od.execute-api.us-east-1.amazonaws.com/dev/get-store-hours-by-id/" 
-        + props.match.params.id
+        "https://xhvvmqq4od.execute-api.us-east-1.amazonaws.com/dev/get-hours-by-id/" 
+        + id 
       )
       .then((res) => {
+        console.log(res.data)
          const { day, open, close } = res.data;
          setFormValues({ day, open, close });
       })

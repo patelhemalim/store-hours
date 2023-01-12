@@ -41,7 +41,9 @@ return (
 			component="span"
 			/>
 		</FormGroup>
-		<Button variant="danger" size="lg"
+		<br></br>
+		<br></br>
+		<Button className="createButton" variant="danger" size="lg"
 			block="block" type="submit">
 			{props.children}
 		</Button>

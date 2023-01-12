@@ -22,7 +22,7 @@ import StoreHoursList from
   "./Components/store-hours-list.component";
 
 import EditHours from
-  "./Components/edit-hour.component";
+  "./Components/edit-store-hour.component";
 
 // App Component
 const App = () => {
@@ -58,12 +58,11 @@ const App = () => {
             <Col md={12}>
               <div className="wrapper">
                 <Routes>
-                  {/* <Route exact path="/"
-					element={<CreateStoreHours/>} /> */}
+
                   <Route path="/create-store-hours"
                     element={<CreateStoreHours />} />
-                  <Route path="/edit-hours/:id"
-                    component={<EditHours />} />
+                  <Route path="/edit-store-hour/:id"
+                    element={<EditHours />} />
                   <Route path="/store-hours-list"
                     element={<StoreHoursList />} />
                 </Routes>
